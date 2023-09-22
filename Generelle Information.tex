@@ -1,0 +1,88 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[nswissgerman]{babel}
+%4 stackanchor  
+\usepackage{stackengine}
+% define nice looking boxes
+\usepackage[many]{tcolorbox}
+
+% a base set, that is then customised
+\tcbset {
+  base/.style={
+    boxrule=0mm,
+    leftrule=1mm,
+    left=1.75mm,
+    arc=0mm, 
+    fonttitle=\bfseries, 
+    colbacktitle=black!10!white, 
+    coltitle=black, 
+    toptitle=0.75mm, 
+    bottomtitle=0.25mm,
+    title={#1}
+  }
+}
+% Mathematical typesetting & symbols
+\usepackage{amsthm, mathtools, amssymb} 
+\usepackage{marvosym, wasysym}
+
+
+\allowdisplaybreaks
+
+% Tables
+\usepackage{tabularx, multirow}
+\usepackage{booktabs}
+\renewcommand*{\arraystretch}{2}
+
+% Make enumerations more compact
+\usepackage{enumitem}
+\setitemize{itemsep=0.5pt}
+\setenumerate{itemsep=0.75pt}
+
+% To include sketches & PDFs
+\usepackage{graphicx}
+
+% For hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true
+}
+% Math helper stuff
+\def\limn{\lim_{n\to \infty}}
+\def\limxo{\lim_{x\to 0}}
+\def\limxi{\lim_{x\to\infty}}
+\def\limxn{\lim_{x\to-\infty}}
+\def\sumk{\sum_{k=1}^\infty}
+\def\sumn{\sum_{n=0}^\infty}
+\def\R{\mathbb{R}}
+\def\dx{\text{ d}x}
+\usepackage[utf8]{inputenc}
+
+\title{Generelle Information}
+\author{Konstantin Lucny}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+\section{Prüfungen}
+\begin{itemize}
+    \item 2 midterms wenn durchschnitt 4 bestanden endprüfung nicht nötig (darf man dann nicht machen wenn man midterm note will) oder nur endprüfung
+    \item \textbf{50\%} der Punkte von den Übungsblättern \textbf{müssen gelöst} sein, damit man bei mid-Terms antreten darf
+    \item Mid-terms werden ca. 2. November und 2. Dezember Woche sein (Normalerweise am späteren Nachmittag)
+\end{itemize}
+\section{Übungsbetrieb}
+\begin{itemize}
+    \item Jede Woche ein Aufgabenblatt Freitags nach der Vorlesung erscheinen (eine Woche zur Lösung gegeben; Abgabe auf Moodle)
+    \item Aufgaben dürfen in klein Gruppen von bis zu 3 Leuten gelöst werden (am besten in der gleichen Übungsgruppe)
+    \item Kursinformation auf Moodle
+    \item Übungsgruppen werden heute um 12:00
+    \item Übungen ab 25.9
+    \item Erstes Übungsblatt 22.9
+\end{itemize}
+
+\section{Tipps}
+\begin{itemize}
+    \item Übungsbespiele aus dem Buch ähnlich zu Prüfungsbeispielen
+\end{itemize}
+
+\end{document}

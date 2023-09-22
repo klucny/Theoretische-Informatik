@@ -1,0 +1,186 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[nswissgerman]{babel}
+%4 stackanchor  
+\usepackage{stackengine}
+% define nice looking boxes
+\usepackage[many]{tcolorbox}
+\usepackage{geometry}
+\geometry{margin=1.2in}
+
+% a base set, that is then customised
+\tcbset {
+  base/.style={
+    boxrule=0mm,
+    leftrule=1mm,
+    left=1.75mm,
+    arc=0mm, 
+    fonttitle=\bfseries, 
+    colbacktitle=black!10!white, 
+    coltitle=black, 
+    toptitle=0.75mm, 
+    bottomtitle=0.25mm,
+    title={#1}
+  }
+}
+\definecolor{brandblue}{rgb}{0.34, 0.7, 1}
+\newtcolorbox{mainbox}[1]{
+  colframe=brandblue, 
+  base={#1}
+}
+
+\definecolor{orange}{rgb}{1, 0.55, 0.3}
+\newtcolorbox{tbox}[1]{
+  colframe=orange, 
+  base={#1}
+}
+
+\definecolor{green}{rgb}{0.294, 0.729, 0.254}
+\newtcolorbox{bembox}[1]{
+  colframe=green, 
+  base={#1}
+}
+
+\definecolor{red}{rgb}{0.99, 0.04, 0.99}
+\newtcolorbox{tipbox}[1]{
+  colframe=red, 
+  base={#1}
+}
+
+\newtcolorbox{defbox}[1]{
+  colframe=black!20!white,
+  base={#1}
+}
+% Mathematical typesetting & symbols
+\usepackage{amsthm, mathtools, amssymb} 
+\usepackage{marvosym, wasysym}
+
+
+\allowdisplaybreaks
+
+% Tables
+\usepackage{tabularx, multirow}
+\usepackage{booktabs}
+\renewcommand*{\arraystretch}{2}
+
+% Make enumerations more compact
+\usepackage{enumitem}
+\setitemize{itemsep=0.5pt}
+\setenumerate{itemsep=0.75pt}
+
+% To include sketches & PDFs
+\usepackage{graphicx}
+
+% For hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true
+}
+% Math helper stuff
+\def\limn{\lim_{n\to \infty}}
+\def\limxo{\lim_{x\to 0}}
+\def\limxi{\lim_{x\to\infty}}
+\def\limxn{\lim_{x\to-\infty}}
+\def\sumk{\sum_{k=1}^\infty}
+\def\sumn{\sum_{n=0}^\infty}
+\def\R{\mathbb{R}}
+\def\dx{\text{ d}x}
+\usepackage[utf8]{inputenc}
+
+\title{Vorlesungen}
+\author{Konstantin Lucny}
+\date{HS 2023}
+
+\begin{document}
+\maketitle
+
+\section{Vorlesung}
+\subsection{Einführung}
+$\dfrac{A, A=> B}{B}$
+\section{Vorlesung (\today)}
+\subsection{Alphabet}
+\begin{itemize}
+    \item endlich viele Zeichen, womit man womöglich unendlich viele Objekte beschreiben kann (e.g. Alphabet  $\sum=\{0,1\}$ [binär Alphabet])
+    \item \textbf{Def. }Wort: Folge von Symbolen aus Alphabet
+    \item \textbf{Def.} leeres Wort: $\lambda$ (hat Länge $0$)
+    \item \textbf{Def.} Länge: $|aabbbcdd|=8$ und \# Vorkommnis eines bestimmten Symbols $|aabbbcdd|_d=2$
+    \item $\sum,...,\sum^*$ die Menge aller Wörter über $\sum$
+\end{itemize}
+\begin{tipbox}
+    {Beispiel: Alphabet}
+    $\sum=\{0,1\}$
+    \\ $\sum^*=\{y_1,y_2,..,y_k|k\in\mathbb N, y_j \in\{0,1\}  \text{ für } j=1,...,k\}\}$
+    $ = \{\lambda, 0, 1, 00, 01, 10, 11,...\}$
+\end{tipbox}
+\subsubsection{Konkatenation}
+$\sum=\{a,b,c\}$ $\sum^*\times\sum^*\rightarrow\sum^*$ 
+\\ \textbf{Def.}: $(\sum^*,\cdot)$ (Monuid) (z.B. $abbc\cdot bbac=abbcbbac$)
+\textbf{Neutral Element}: $\lambda$
+\begin{defbox}
+    {Definition: Teilwort}
+    \textit{v} heisst Teilwort von \textit{w} $\iff \exists x,y\in\sum^*:w=xvy$ (unformal: \textit{v} ist eine Teilfolge von \textit{w}.
+\end{defbox}
+\begin{defbox}
+    {Definition: Präfix und Suffix}
+    \textit{v} heisst ein \underline{Präfix} von \textit{w} $\iff \exists y \in \sum^*:w=vy$
+    \textit{y} heisst ein \underline{Suffix} von \textit{w} $\iff \exists v \in \sum^*:w=vy$
+\end{defbox}
+\textbf{Übersicht Menge}
+\begin{itemize}
+    \item Menge A
+    \item $|A|$ die Kardinalität
+    \item $P(A)$ die Potenzmenge von \textit{A}
+\end{itemize}
+\begin{defbox}
+    {Kanonische Ordnung}
+    $\sum=\{s_1,s_2,...,s_m\}$; $s_1<s_2<...<s_m$
+\end{defbox}
+\begin{defbox}
+    {Ordnung in $\sum^*$}
+    $u<v\iff |u|<|v| \vee |u|=|v|\wedge =u=xs_i\cdot u'\wedge v=xs_j\cdot v'\wedge s_i<s_j$
+\end{defbox}
+\subsubsection{Sprache}
+\textbf{Def.} $\sum,\sum^*$ eine \underline{Sprache} L über $\sum^*$ .. $L\subseteq\sum^*$\\[3pt]
+\textbf{Komplement}: $L^C=\sum^*-L$\\[3pt]
+\textbf{Mengen Operationen}: $L_1 \cup L_2, L_1\cap L_2, L_1-L_2$ \\[3pt]
+\textbf{Leere Sprache}: $L_{\emptyset}=\emptyset$; $L_\lambda=\{\lambda\}$\\[3pt]
+$L_1\cdot L_2 = L_2L_1=\{vw|v\in L_1 \wedge w\in L_2\}$\\[3pt]
+\textbf{Bsp.} $\{a^nb^n|n\in\mathbb N\}\cdot\{c^mb^{2m}|m\in\mathbb N\}=\{a^nb^nc^md^{2m}|n\in\mathbb N, m\in \mathbb N\}$
+\begin{bembox}
+    {Konkatenation mit div. Mengen}
+    \begin{itemize}
+        \item     $L\cdot\emptyset=\emptyset$ 
+        \item     $L\cdot L_\lambda=L$ 
+        \item     $L^0=L_\lambda=\{\lambda\}$
+        \item    $L^1=L$
+        \item    $L^{i+1}=L\cdot L^i$
+        \item $L^+=\displaystyle\bigcup_{i\in\mathbb N -{0}} L^i=L\cdot L^*$
+        \item $L*=\displaystyle\bigcup_{i\in \mathbb N}L^i$
+    \end{itemize}
+\end{bembox}
+\begin{tbox}
+    {Assoziativität Konkatenation}
+    $L_1\cdot L_2\wedge L_1\cdot L_3= L_1( $\\
+    Beiweis in Notizen \today
+\end{tbox}
+\subsection{Homomorphismus}
+$\sum_1, \sum_2$ \\[4pt]
+$h:\sum_1^*\rightarrow\sum_2^*$\\[3pt]
+$(i)\ h(\lambda)=\lambda$\\[3pt]
+$(ii)\  h(uv)=h(u)\cdoth(v);\forall u,v\in\sum^*$\\[3pt]
+$h(a_1\cdot...\cdot a_n)=h(a_1)\cdot ... \cdot h(a_n); (a_i\in\sum)$\\[3pt]
+
+$A:\underbrace{\textstyle{\sum_1^*}}_{x}\rightarrow\underbrace{\textstyle\sum_2^*}_{A(x)}$\\
+\textbf{Def.} Äquivalenz: A äquivalent zu B: $\forall x .\in \sum_1^*: A(x)=B(x)$
+
+\pagebreakcc
+\subsection{Entscheidungsproblem ($\sum, \Gamma$)}
+$L\subseteq\sum^*$\\[4pt]
+\textit{A} löst $(\sum,\Gamma)$\\[4pt]
+$\forall x \in \sum^*: A(x)
+\begin{cases}
+    1 & \text{falls } x \in \Gamma\\
+    0 & \text{falls } x \notin \Gamma
+\end{cases}$
+
+\end{document}
